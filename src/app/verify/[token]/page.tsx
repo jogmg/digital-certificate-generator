@@ -3,7 +3,7 @@ import { ICertificate, verifyCertificate } from "@/services/certificateService";
 import { format } from "date-fns";
 
 interface VerificationPageProps {
-  params: { token: string };
+  params: Promise<{ token: string }>;
 }
 
 interface IApiResponse {
@@ -19,7 +19,7 @@ export default async function VerificationPage({
   let certificate: ICertificate | null = null;
 
   try {
-    const result: IApiResponse = await verifyCertificate(params.token);
+    const result: IApiResponse = await verifyCertificate((await params).token);
     certificate = result.data;
   } catch (error) {
     console.error(error);
@@ -73,7 +73,7 @@ export default async function VerificationPage({
                 <div className="flex flex-col gap-4 text-sm text-gray-600">
                   <div>
                     <span className="font-medium">Verification ID:</span>{" "}
-                    {params.token}
+                    {(await params).token}
                   </div>
                   <div>
                     <span className="font-medium">Valid Until:</span>{" "}
