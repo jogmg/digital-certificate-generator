@@ -129,7 +129,7 @@ export default function CertificateForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className={`w-2/4 py-3 px-4 rounded-xl font-medium text-white shadow-md transition-colors ${
+        className={`w-full sm:w-2/4 py-3 px-4 rounded-xl font-medium text-white shadow-md transition-colors ${
           isSubmitting
             ? "bg-gray-400 cursor-not-allowed"
             : "bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
