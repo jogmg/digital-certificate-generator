@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+body {
+  @apply bg-[#0D0E12];
+}
+
+.form_field {
+  @apply text-black;
+}
+
 /* h1 {
   @apply text-4xl font-bold text-gray-800 mb-4;
 

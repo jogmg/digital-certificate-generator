@@ -3,6 +3,7 @@ import React from "react";
 interface FormFieldProps {
   label: string;
   name: string;
+  placeholder?: string;
   value: string;
   onChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -18,6 +19,7 @@ interface FormFieldProps {
 export const FormField = ({
   label,
   name,
+  placeholder,
   value,
   onChange,
   required = false,
@@ -28,8 +30,8 @@ export const FormField = ({
   children,
 }: FormFieldProps) => {
   return (
-    <div className="space-y-2">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-700">
+    <div className="form_field space-y-2 text-left">
+      <label htmlFor={name} className="block text-sm font-medium text-white">
         {label} {required && <span className="text-red-500">*</span>}
       </label>
 
@@ -38,12 +40,13 @@ export const FormField = ({
           type={type}
           id={name}
           name={name}
+          placeholder={placeholder}
           value={value}
           onChange={onChange}
           required={required}
           min={min}
           max={max}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-300 focus:border-indigo-500 transition-colors"
+          className="w-full px-4 py-2  text-white border border-[#37383e] rounded-lg focus:border-indigo-500 transition-colors"
         />
       ) : (
         <select
@@ -52,7 +55,7 @@ export const FormField = ({
           value={value}
           onChange={onChange}
           required={required}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-300 focus:border-indigo-500 transition-colors"
+          className="w-full px-4 py-2 border text-white border-[#37383e] rounded-lg focus:border-indigo-500  transition-colors"
         >
           {children}
         </select>

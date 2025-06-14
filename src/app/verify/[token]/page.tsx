@@ -16,26 +16,27 @@ interface IApiResponse {
 export default async function VerificationPage({
   params,
 }: VerificationPageProps) {
+  const token = (await params).token;
   let certificate: ICertificate | null = null;
 
   try {
-    const result: IApiResponse = await verifyCertificate((await params).token);
+    const result: IApiResponse = await verifyCertificate(token);
     certificate = result.data;
   } catch (error) {
     console.error(error);
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-12 px-4">
+    <div className="min-h-screen py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
+          <h1 className="text-3xl font-bold text-white mb-2">
             Certificate Verification
           </h1>
-          <p className="text-gray-600">Validating certificate authenticity</p>
+          <p className="text-[#7E8086]">Validating certificate authenticity</p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div className="bg-[#171921] rounded-xl shadow-lg overflow-hidden">
           <div
             className={`${
               certificate?.valid ? "bg-indigo-700 py-4" : "bg-red-600 py-20"
@@ -66,14 +67,14 @@ export default async function VerificationPage({
             <div className="p-6 md:p-8">
               <CertificateDetails certificate={certificate} />
 
-              <div className="mt-8 pt-6 border-t border-gray-200">
-                <h3 className="font-medium text-gray-700 mb-3">
+              <div className="mt-8 pt-6 border-t border-[#37383e]">
+                <h3 className="font-medium text-[#7E8086] mb-3">
                   Verification Details
                 </h3>
-                <div className="flex flex-col gap-4 text-sm text-gray-600">
-                  <div>
+                <div className="flex flex-col gap-4 text-sm text-white">
+                  <div title={token}>
                     <span className="font-medium">Verification ID:</span>{" "}
-                    {(await params).token}
+                    {`${token.slice(0, 6)}...${token.slice(-6)}`}
                   </div>
                   <div>
                     <span className="font-medium">Valid Until:</span>{" "}

@@ -8,7 +8,7 @@ import { useState } from "react";
 export default function CertificateForm() {
   const [formData, setFormData] = useState({
     name: "",
-    dob: "",
+    dob: new Date().toISOString().split("T")[0],
     matricNo: "",
     course: "",
     grade: "",
@@ -61,11 +61,12 @@ export default function CertificateForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6 text-center">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <FormField
           label="Full Name"
           name="name"
+          placeholder="Enter your full name"
           value={formData.name}
           onChange={handleChange}
           required
@@ -80,6 +81,7 @@ export default function CertificateForm() {
         />
         <FormField
           label="Matriculation Number"
+          placeholder="Enter your matriculation number"
           name="matricNo"
           value={formData.matricNo}
           onChange={handleChange}
@@ -88,6 +90,7 @@ export default function CertificateForm() {
         <FormField
           label="Course"
           name="course"
+          placeholder="Enter your course name"
           value={formData.course}
           onChange={handleChange}
           required
@@ -126,7 +129,7 @@ export default function CertificateForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className={`w-full py-3 px-4 rounded-xl font-medium text-white shadow-md transition-colors ${
+        className={`w-2/4 py-3 px-4 rounded-xl font-medium text-white shadow-md transition-colors ${
           isSubmitting
             ? "bg-gray-400 cursor-not-allowed"
             : "bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
