@@ -41,7 +41,7 @@ export const CertificateDetails = ({
             </div>
             <div className="flex justify-between text-white">
               <dt className="font-medium">Grade Achieved:</dt>
-              <dd className="text-[13px] bg-indigo-700 px-1 py-1 rounded-md">
+              <dd className="text-[13px] bg-indigo-700 px-2 py-1 rounded-md">
                 {certificate.grade ?? "N/A"}
               </dd>
             </div>
