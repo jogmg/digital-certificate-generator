@@ -21,7 +21,9 @@ export default async function VerificationPage({
   try {
     const result: IApiResponse = await verifyCertificate(params.token);
     certificate = result.data;
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-12 px-4">
