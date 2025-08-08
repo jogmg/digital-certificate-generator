@@ -24,7 +24,7 @@ export default async function VerificationPage({
   try {
     result = await verifyCertificate(token);
   } catch (error) {
-    // console.error(error);
+    console.error(error);
   }
 
   return (
