@@ -1,11 +1,13 @@
-import { ICertificate } from "@/services/certificateService";
+import { ICertificateData } from "@/services/certificateService";
 import { format } from "date-fns";
+
+interface CertificateDetailsProps {
+  certificate: ICertificateData;
+}
 
 export const CertificateDetails = ({
   certificate,
-}: {
-  certificate: ICertificate;
-}) => {
+}: CertificateDetailsProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div className="space-y-6">

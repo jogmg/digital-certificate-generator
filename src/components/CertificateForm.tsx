@@ -53,7 +53,7 @@ export default function CertificateForm() {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError("An error occurred");
+        setError("An error occurred generating certificate");
       }
     } finally {
       setIsSubmitting(false);

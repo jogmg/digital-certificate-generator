@@ -9,8 +9,8 @@ export default function Home() {
             Digital Certificate Generator
           </h1>
           <p className="text-[#7E8086] max-w-2xl mx-auto">
-            Fill the form below to generate a verifiable digital certificate
-            with QR code for authentication
+            Fill the form below to generate a digital certificate with QR code
+            for authentication
           </p>
         </header>
         <section className="bg-[#171921] rounded-xl shadow-lg shadow-[#00000066] border border-[#37383e] p-6 md:p-8">

@@ -1,6 +1,6 @@
-export interface ICertificate {
-  valid?: boolean;
-  message?: string;
+import { ICertificate } from "@/app/verify/[token]/page";
+
+export interface ICertificateData {
   name: string;
   dob: string;
   matricNo: string;
@@ -13,7 +13,7 @@ export interface ICertificate {
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-export const generateCertificate = async (data: ICertificate) => {
+export const generateCertificate = async (data: ICertificateData) => {
   const response = await fetch(`${API_BASE_URL}/certificates`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -24,17 +24,19 @@ export const generateCertificate = async (data: ICertificate) => {
     throw new Error("Failed to generate certificate");
   }
 
-  return response.blob();
+  return await response.blob();
 };
 
-export const verifyCertificate = async (token: string) => {
+export const verifyCertificate = async (
+  token: string
+): Promise<ICertificate> => {
   const response = await fetch(
     `${API_BASE_URL}/certificates/verify?token=${token}`
   );
 
   if (!response.ok) {
-    throw new Error("Failed to verify certificate");
+    throw new Error("Error verifying certificate");
   }
 
-  return response.json();
+  return await response.json();
 };
